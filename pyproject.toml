@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dbunk-conformance"
+version = "0.1.0"
+description = "Checks dbunk worked examples against dbunk PROTOCOL.md and rubber_ducky review protocol v1.3"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "rubber-ducky @ git+https://github.com/beardfaceguy/rubber_ducky@0ed4576123380169594b48233bb573a573fb094c",
+    "pydantic>=2.13.4",
+]
+
+[project.scripts]
+dbunk-conformance = "dbunk_conformance.check:run"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
